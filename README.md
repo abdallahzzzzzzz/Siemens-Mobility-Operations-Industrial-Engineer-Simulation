@@ -14,25 +14,39 @@ During this simulation, I stepped into the role of an **Operations Industrial En
 ## Task 1 — Time Study & Bottleneck Analysis  
 
 ### Background & Goal  
-On Monday morning, the team gathered for a critical meeting led by Jamal, the senior operations manager. The challenge was clear:  
-- Identify inefficiencies in the **Aurora Express assembly line**.  
-- Analyze time study data to find bottlenecks and propose solutions.  
-- Ensure the project meets — and surpasses — benchmarks for efficiency and sustainability.  
+The team was tasked with identifying inefficiencies in the **Aurora Express assembly line**. Using time study data, the goal was to pinpoint bottlenecks and propose improvements to meet — and surpass — Siemens Mobility’s efficiency and sustainability benchmarks.
 
-### Key Findings  
-- **Step 14 (Mount wheel to axle)** → **Primary bottleneck** due to significantly higher average time.  
-- **Step 6 (Lubricate wheel bearings)** → **High variability** (CV outlier).  
+### Preliminary Analysis  
+Before applying thresholds, an exploratory look revealed two categories of concern:  
+- **Steps 6, 15, 20** → wider spreads, indicating higher variability.  
+- **Steps 4, 14, 16** → consistently longer times, suggesting throughput bottlenecks.  
 
-**Visuals:**  
+**Box Plot of Observed Times per Step**  
+![Box Plot Highlighted](images/task1_visuals/boxplot_obs_times.png)  
+*Interpretation: Steps **6, 15, 20** show wider spreads (higher variability), while Steps **4, 14, 16** stand out as longer-duration tasks. This suggests two categories of potential bottlenecks: inconsistency-driven vs duration-driven.*
+
+**Correlation Between Average Time and CV**  
+![Correlation Plot](images/task1_visuals/correlation_avg_cv.png)  
+*Interpretation: Strong negative correlation ($r = -0.783$, $p \approx 4.50 \times 10^{-5}$) — longer steps are more consistent, while shorter tasks fluctuate more, often depending on operator handling.*  
+
+
+### Bottleneck Analysis  
+Two metrics were applied with a strict **Mean + 2σ threshold**:  
+- **Average Time (s):** flags duration-driven bottlenecks.  
+- **Coefficient of Variation (CV):** flags inconsistency-driven bottlenecks, normalizing variability across tasks of different lengths.  
+
+**Primary Time Bottleneck (Average Time, Mean + 2σ)**  
 ![Bottleneck Time Analysis](images/task1_visuals/time_bottleneck.png)  
-*Interpretation: Step 14 has the highest average time, creating a throughput bottleneck.*  
+*Interpretation: Step 14 — Mount wheel to axle: highest average time, linked to crane use and heavy alignment.*  
 
+**Primary Variability Bottleneck (CV, Mean + 2σ)**  
 ![Variability Analysis](images/task1_visuals/variability_bottleneck.png)  
-*Interpretation: Step 6 shows high relative variability, reducing process consistency.*  
+*Interpretation: Step 6 — Lubricate wheel bearings: high variability, likely due to inconsistent method or accessibility.*  
+
 
 ### Recommendation  
-- **Step 14 (Mount wheel to axle):** Initially proposed automation to reduce manual handling.  
-- **Step 6 (Lubricate wheel bearings):** Standardization of lubrication tools/methods to reduce variability.  
+- **Step 14:** (Mount wheel to axle) → Initially proposed automation to reduce manual handling.  
+- **Step 6:** (Lubricate wheel bearings) → Standardize lubrication tools/methods to improve consistency.  
 
 ---
 
