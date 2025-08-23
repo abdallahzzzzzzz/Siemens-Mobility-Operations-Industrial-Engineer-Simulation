@@ -27,7 +27,7 @@ Before applying thresholds, an exploratory look revealed two categories of conce
 
 **Correlation Between Average Time and CV**  
 ![Correlation Plot](images/task1_visuals/correlation_avg_cv.png)  
-*Interpretation: Strong negative correlation ($r = -0.783$, $p \approx 4.50 \times 10^{-5}$) — longer steps are more consistent, while shorter tasks fluctuate more, often depending on operator handling.*  
+*Interpretation: Strong negative correlation — longer steps are more consistent, while shorter tasks fluctuate more, often depending on operator handling.*  
 
 
 ### Bottleneck Analysis  
